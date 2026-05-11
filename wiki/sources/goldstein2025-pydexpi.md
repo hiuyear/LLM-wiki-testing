@@ -47,7 +47,7 @@ The DEXPI specification uses a type hierarchy. pyDEXPI maps this faithfully:
 
 - **Supertype → class** relationship becomes Python class inheritance
 - **Subtype → inverse** (child class inherits from parent class)
-- **Compositional attributes** (e.g., a vessel *contains* nozzles) → `attribute_category="compositional"` field annotation
+- **Compositional attributes** (e.g., a vessel *contains* nozzles) → `attribute_category="composition"` field annotation
 - **Reference attributes** (e.g., a valve *references* its actuator) → `attribute_category="reference"`
 - **Data attributes** (e.g., nominal diameter) → `attribute_category="data"`
 

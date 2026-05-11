@@ -29,11 +29,11 @@ Open-source Python library from the Process Intelligence Research Group at TU De
 
 ### Implementation details
 
-473 DEXPI data classes implemented as **Pydantic Python data classes** across 11 packages (DexpiModel, MetaData, PlantStructure, Equipment, Piping, Instrumentation, Customization, Enumerations, PhysicalQuantities, Graphics, DataTypes).
+Implements DEXPI **version 1.3** (v1.4 published December 2024; not yet covered). 473 DEXPI data classes implemented as **Pydantic Python data classes** across 11 packages (DexpiModel, MetaData, PlantStructure, Equipment, Piping, Instrumentation, Customization, Enumerations, PhysicalQuantities, Graphics, DataTypes).
 
 Key design decisions:
 - **Supertype → class inheritance** (DEXPI type hierarchy maps directly to Python class hierarchy)
-- **Attribute category annotations**: `attribute_category="compositional"` for containment relationships, `"reference"` for cross-entity references, `"data"` for scalar properties
+- **Attribute category annotations**: `attribute_category="composition"` for containment relationships, `"reference"` for cross-entity references, `"data"` for scalar properties
 - **`DexpiBaseModel`**: base class for all component classes — assigns UUID on instantiation, new UUID on copy
 - **`DexpiDataTypeBaseModel`**: base class for primitive types; Python builtins (str, int) replace simple DEXPI data types
 - **Enumerations**: DEXPI enumerations → Python `Enum` subclasses
