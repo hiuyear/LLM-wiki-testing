@@ -55,5 +55,20 @@ This is structural non-identifiability: from the output data alone, you can't di
 
 ---
 
+## Compartmentalization
+
+A single-compartment model (one balance volume for the whole reactor) can't capture non-ideal flow patterns: vortices, bypasses, dead zones. The model topology — how many compartments, how they connect — must be discovered from data alongside the equations.
+
+Part II (Laub et al. 2026) automates this. Model topologies are represented as colored digraphs and discovered by an upper-level RL agent using graph grammar rules. The result for the Taylor-Couette reactor was a topology (CSTR cascade + bypass + PFR) that matches expert-built literature models at ~5% RMSD.
+
+## Transfer learning for recalibration
+
+When operating conditions change, the model needs structural recalibration (not just parameter re-fitting). Laub et al. (2026) show that initializing the RL agent with the Q-table from a prior modeling campaign at different conditions speeds up recalibration by ~16 percentage points in success rate within 30 min.
+
+Why: the Q-table encodes which graph manipulations led to good and bad topologies. This knowledge is partially transferable even when the correct new topology is structurally different from the old one — the agent starts by knowing what *not* to try.
+
+---
+
 ## Papers
-- [[sources/heyer2025-rl-mechanistic-models]] — RL-automated mechanistic model generation for reactor digital twins; Part I of 2-part study
+- [[sources/heyer2025-rl-mechanistic-models]] — RL-automated mechanistic model generation for reactor digital twins; Part I: equation generation
+- [[sources/laub2026-rl-mechanistic-models-ii]] — Part II: compartmentalization, graph grammar, reward shaping, transfer learning

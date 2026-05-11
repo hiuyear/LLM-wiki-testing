@@ -1,5 +1,18 @@
 # Wiki Log
 
+## [2026-05-11] ingest | Laub et al. 2026 — RL for Mechanistic Reactor Models (Part II)
+
+**Source**: `raw/1-s2.0-S0098135425003874-main.pdf`  
+**Pages created**:
+- `sources/laub2026-rl-mechanistic-models-ii.md` (new)
+- `concepts/engineering-ontologies.md` (new)
+
+**Pages updated**: `concepts/digital-twins.md` (compartmentalization + transfer learning), `concepts/rl-for-scientific-discovery.md` (hierarchical RL, graph grammar, Q-table transfer, sparse rewards), `entities/taylor-couette-reactor.md` (Part II RTD results), `index.md`, `log.md`
+
+**Cross-paper note**: Direct continuation of Heyer et al. 2025 (Part I). Key new insight: in sparse reward spaces, domain knowledge in the reward function beats sophisticated RL architecture. The ontology pattern is the most transferable idea to El Agente.
+
+---
+
 ## [2026-05-11] ingest | Heyer et al. 2025 — RL for Mechanistic Reactor Models (Part I)
 
 **Source**: `raw/1-s2.0-S0098135425002832-main.pdf`  

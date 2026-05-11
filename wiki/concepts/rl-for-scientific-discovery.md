@@ -62,12 +62,32 @@ Key advantage over symbolic regression: RL operates *within* the space of physic
 ## Hierarchical RL
 
 For large search spaces, flat RL struggles with reward sparsity (the reward only comes at the end of a long trajectory). Hierarchical RL decomposes this:
-- High-level agent decides on coarse structure (e.g., which process sections to include)
-- Low-level agent specifies details within each section
+- **Upper-level agent**: decides on coarse structure (model topology — which compartments and interfaces)
+- **Lower-level agent**: specifies details within each compartment (equation generation from Part I)
 
-Khan & Lapkin (2022) use this for process flowsheet design. Heyer et al. (2025) hint at a similar pattern for the compartmentalization module in Part II.
+In Laub et al. (2026), the upper-level agent manipulates a colored digraph representing the reactor topology using graph grammar production rules. For each topology candidate, the lower-level agent runs several times; the best-fit result feeds back as reward to the upper level. The two Q-tables are independent and learned simultaneously.
+
+## Graph grammar for constrained search
+
+Instead of allowing arbitrary graph manipulations, **graph grammar** formalizes valid actions as production rules: `L ::= R` means "if subgraph L exists, you may replace it with R." This:
+- Constrains the search to physically meaningful topologies (no disconnected graphs, no isolated compartments)
+- Can be stored in an ontology and reused across modeling campaigns
+- Allows different grammars for different unit operation types
+
+## Q-table transfer (transfer learning)
+
+The Q-table is a record of which (state, action) pairs have historically led to good models. When operating conditions change and the model needs recalibration, the new run can be initialized with the old Q-table. Result (Laub et al. 2026): ~16 percentage point improvement in finding a recalibrated model within 30 min, even when the correct new topology is structurally different from the old one.
+
+The mechanism: the old Q-table tells the agent which graph manipulations are *rarely* productive (low Q-values). These are still probably unproductive in the new scenario, so the agent skips them and explores more promising directions faster.
+
+## Sparse rewards and domain knowledge
+
+In some search spaces, the reward landscape is nearly flat: most model topologies are equally bad. In this case, RL without domain knowledge performs no better than random search. The solution is **reward shaping**: inject domain knowledge (e.g., "a PTC reactor *must* have a diffusive mass transfer interface") as a cheap preliminary reward R₁ that filters out topologies before the expensive parameter estimation step (R₂).
+
+Lesson: sophisticated RL architecture is wasted on sparse reward spaces without domain knowledge injection. Fix the reward landscape first.
 
 ---
 
 ## Papers
 - [[sources/heyer2025-rl-mechanistic-models]] — RL for reactor mechanistic model generation; Q-learning, MDP formulation, dynamic ε-policy
+- [[sources/laub2026-rl-mechanistic-models-ii]] — hierarchical RL for compartmentalization + equation generation; graph grammar; reward shaping; Q-table transfer learning
