@@ -1,5 +1,20 @@
 # Wiki Log
 
+## [2026-05-11] ingest | Heyer et al. 2025 — RL for Mechanistic Reactor Models (Part I)
+
+**Source**: `raw/1-s2.0-S0098135425002832-main.pdf`  
+**Pages created**:
+- `sources/heyer2025-rl-mechanistic-models.md` (new)
+- `concepts/digital-twins.md` (new)
+- `concepts/rl-for-scientific-discovery.md` (new)
+- `entities/taylor-couette-reactor.md` (new)
+
+**Pages updated**: `index.md`, `log.md`
+
+**Cross-paper note**: Different domain from papers 1–2 (mechanistic modeling vs. LLM/KG). Lapkin group (Cambridge) is adjacent to the Matter Lab ecosystem. Key transferable concept: MDP formulation for structured agent decision-making — more reliable than open-ended LLM planning when the action space is well-defined and enumerable.
+
+---
+
 ## [2026-05-11] ingest | Alimin & Schweidtmann 2026 — ChatP&ID / GraphRAG for P&IDs
 
 **Source**: `raw/2603.22528v1.pdf`  
