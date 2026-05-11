@@ -22,13 +22,32 @@ The solution (from ChatP&ID): parse DEXPI via pyDEXPI, then collapse to a concep
 
 ## pyDEXPI
 
-Open-source Python library from the Process Intelligence Research Group at TU Delft (Schweidtmann group). Parses DEXPI XML into Python objects that can be mapped to a labeled property graph (LPG).
+Open-source Python library from the Process Intelligence Research Group at TU Delft (Schweidtmann group). First and only open-source DEXPI implementation — no prior tool had a Python API or open license.
 
-- Each P&ID component → graph node
-- Relationships (compositional, reference) → directed edges
-- Supports three abstraction levels: Complete, Process, Conceptual
+**Source**: [github.com/process-intelligence-research/pyDEXPI](https://github.com/process-intelligence-research/pyDEXPI)  
+**Paper**: [[sources/goldstein2025-pydexpi]]
 
-**Source**: [github.com/process-intelligence-research/pyDEXPI](https://github.com/process-intelligence-research/pyDEXPI)
+### Implementation details
+
+473 DEXPI data classes implemented as **Pydantic Python data classes** across 11 packages (DexpiModel, MetaData, PlantStructure, Equipment, Piping, Instrumentation, Customization, Enumerations, PhysicalQuantities, Graphics, DataTypes).
+
+Key design decisions:
+- **Supertype → class inheritance** (DEXPI type hierarchy maps directly to Python class hierarchy)
+- **Attribute category annotations**: `attribute_category="compositional"` for containment relationships, `"reference"` for cross-entity references, `"data"` for scalar properties
+- **`DexpiBaseModel`**: base class for all component classes — assigns UUID on instantiation, new UUID on copy
+- **`DexpiDataTypeBaseModel`**: base class for primitive types; Python builtins (str, int) replace simple DEXPI data types
+- **Enumerations**: DEXPI enumerations → Python `Enum` subclasses
+
+Pydantic handles validation and type-checking automatically at runtime — critical for a 473-class spec.
+
+### Functionality
+
+- **Import**: parse Proteus XML into pyDEXPI object model
+- **Save/load**: pickle serialization for caching
+- **Export**: convert to NetworkX graph
+- **Toolkits**: `model_toolkit` (whole-model traversal), `piping_toolkit` (pipe routing/connectivity), `instrumentation_toolkit` (instrument loop identification)
+
+Each P&ID component → graph node; relationships (compositional, reference) → directed edges.
 
 ---
 
@@ -48,6 +67,7 @@ The conceptual level achieves 85% cost reduction vs raw Proteus with +5% accurac
 
 | Paper | Usage |
 |---|---|
+| [[sources/goldstein2025-pydexpi]] | Formally documents the pyDEXPI implementation: Pydantic classes, 473 types, import/export/toolkit architecture |
 | [[sources/alimin2026-chatp-id]] | pyDEXPI used to parse smart P&IDs into Neo4j; conceptual-level KG fed to 4-tool GraphRAG system |
 
 ---

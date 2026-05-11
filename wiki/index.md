@@ -3,6 +3,7 @@
 ## Sources
 | Page | Summary |
 |---|---|
+| [goldstein2025-pydexpi](sources/goldstein2025-pydexpi.md) | pyDEXPI: first open-source DEXPI implementation; 473 Pydantic data classes; import/export/toolkit; infrastructure layer for ChatP&ID |
 | [bunkova2026-kg-llm-synthesis](sources/bunkova2026-kg-llm-synthesis.md) | Text2Cypher pipeline over a reaction KG for synthesis retrieval; one-shot prompting beats zero-shot; CoVe validator is the bottleneck |
 | [alimin2026-chatp-id](sources/alimin2026-chatp-id.md) | GraphRAG over P&IDs via 4-tool agent (ContextRAG/VectorRAG/PathRAG/CypherRAG); conceptual KG = 7K tokens, 91% accuracy at $0.004/task |
 | [heyer2025-rl-mechanistic-models](sources/heyer2025-rl-mechanistic-models.md) | RL (Q-learning) agent generates interpretable mechanistic reactor models from concentration data; 1.5× speedup over exhaustive search; NRMSE = 2.4% on Taylor-Couette reactor |

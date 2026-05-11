@@ -1,5 +1,17 @@
 # Wiki Log
 
+## [2026-05-11] ingest | Goldstein et al. 2025 — pyDEXPI
+
+**Source**: `raw/LAPSE-2025.0371-1v1.pdf`  
+**Pages created**:
+- `sources/goldstein2025-pydexpi.md` (new)
+
+**Pages updated**: `entities/dexpi-standard.md` (full pyDEXPI implementation section: Pydantic classes, 473 types, attribute_category system, toolkits), `index.md`, `log.md`
+
+**Cross-paper note**: Same TU Delft group as ChatP&ID. pyDEXPI is the shared infrastructure layer. This paper explains the 150K→7K token compression ratio from Alimin et al. — the Proteus XML contains geometry/graphics data from all 473 classes; the conceptual KG strips everything non-process. No new concepts needed; dexpi-standard.md substantially upgraded.
+
+---
+
 ## [2026-05-11] ingest | Laub et al. 2026 — RL for Mechanistic Reactor Models (Part II)
 
 **Source**: `raw/1-s2.0-S0098135425003874-main.pdf`  
