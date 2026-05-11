@@ -69,6 +69,23 @@ Why: the Q-table encodes which graph manipulations led to good and bad topologie
 
 ---
 
+## Ontology-based digital twin architecture (Zhang et al. 2026)
+
+Where Heyer/Laub focus on *generating* the model, Zhang et al. focus on *hosting and deploying* it. Their architecture has three layers:
+
+1. **Ontology definition**: model ontology (laws as MathML, parameters, units) + process ontology (plant structure: unit operations, streams, process variables)
+2. **Semantic representation**: instances of both ontologies + AI model = the actual digital twin
+3. **Contextual agent layer**: agents navigate the KG to build → calibrate → apply models automatically
+
+The key insight: physical laws are stored as MathML in the model ontology and converted to runnable Python at runtime. The ontology is not just documentation — it is the model knowledge base.
+
+**Real deployment (AMPLE pilot plant)**: Physical model (mass balance) + Autoencoder running in parallel for anomaly detection. Physical model is more robust and interpretable; AE is more sensitive. Combined approach outperforms either alone. Infrastructure: Gremlin GraphDB (KG), MongoDB (time-series), PostgreSQL (metadata), OPC-UA → Azure IoT Edge data pipeline.
+
+**Acknowledged bottleneck**: manual ontology construction. The paper flags AI automation of ontology instantiation from process diagrams as future work.
+
+---
+
 ## Papers
 - [[sources/heyer2025-rl-mechanistic-models]] — RL-automated mechanistic model generation for reactor digital twins; Part I: equation generation
 - [[sources/laub2026-rl-mechanistic-models-ii]] — Part II: compartmentalization, graph grammar, reward shaping, transfer learning
+- [[sources/zhang2026-semantic-framework]] — ontology-based 3-layer DT architecture; MathML-encoded laws; real AMPLE pilot plant deployment; physical + AE anomaly detection

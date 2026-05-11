@@ -34,3 +34,4 @@ The log records every ingest operation. The index is the entry point for queryin
 | Heyer et al. 2025 | RL (Q-learning) for automated mechanistic reactor model generation |
 | Laub et al. 2026 | Hierarchical RL for reactor compartmentalization + ontology layer |
 | Goldstein et al. 2025 | pyDEXPI: open-source Python framework for the DEXPI P&ID standard |
+| Zhang et al. 2026 | Ontology-based semantic framework for process digitalisation; dual-ontology (model + process) KG; agents as KG navigators; anomaly detection on real pilot plant |

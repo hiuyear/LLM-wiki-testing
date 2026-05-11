@@ -1,5 +1,17 @@
 # Wiki Log
 
+## [2026-05-11] ingest | Zhang et al. 2026 — Semantic Framework for Chemical Process Digitalisation
+
+**Source**: `raw/1-s2.0-S1385894726018206-main.pdf`  
+**Pages created**:
+- `sources/zhang2026-semantic-framework.md` (new)
+
+**Pages updated**: `concepts/engineering-ontologies.md` (dual-ontology pattern, MathML encoding, cross-domain stack, agents-as-KG-navigators), `concepts/digital-twins.md` (ontology-based 3-layer DT architecture, real AMPLE deployment), `index.md`, `log.md`
+
+**Cross-paper note**: Same Lapkin group (Cambridge) as Heyer et al. 2025 and Laub et al. 2026. Heyer/Laub automate model *generation*; this paper automates model *management and deployment*. Complementary: one finds the equations, the other hosts and executes them. OntoCAPE and DEXPI both appear — shared vocabulary across the Cambridge and TU Delft papers. MathML-encoded laws stored in the KG is the most transferable pattern.
+
+---
+
 ## [2026-05-11] ingest | Goldstein et al. 2025 — pyDEXPI
 
 **Source**: `raw/LAPSE-2025.0371-1v1.pdf`  

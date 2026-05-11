@@ -3,6 +3,7 @@
 ## Sources
 | Page | Summary |
 |---|---|
+| [zhang2026-semantic-framework](sources/zhang2026-semantic-framework.md) | Dual-ontology (model + process) KG framework for process digitalisation; MathML-encoded laws; agents as KG navigators; anomaly detection on TE process + real AMPLE pilot plant |
 | [goldstein2025-pydexpi](sources/goldstein2025-pydexpi.md) | pyDEXPI: first open-source DEXPI implementation; 473 Pydantic data classes; import/export/toolkit; infrastructure layer for ChatP&ID |
 | [bunkova2026-kg-llm-synthesis](sources/bunkova2026-kg-llm-synthesis.md) | Text2Cypher pipeline over a reaction KG for synthesis retrieval; one-shot prompting beats zero-shot; CoVe validator is the bottleneck |
 | [alimin2026-chatp-id](sources/alimin2026-chatp-id.md) | GraphRAG over P&IDs via 4-tool agent (ContextRAG/VectorRAG/PathRAG/CypherRAG); conceptual KG = 7K tokens, 91% accuracy at $0.004/task |

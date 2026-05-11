@@ -70,5 +70,44 @@ An ontology (or at minimum, a schema-driven knowledge graph) answers these quest
 
 ---
 
+## Dual-ontology pattern (Zhang et al. 2026)
+
+Where Laub et al. use a single ontology extended with a modeling subdomain, Zhang et al. separate concerns into two distinct ontologies:
+
+- **Model ontology**: physical laws only — Law, Parameter, Unit. Laws are stored as MathML (a standard for encoding mathematical structure). A `MathML2Code` module converts them to runnable Python at runtime. The ontology is therefore *executable*: adding a new physical law = adding a MathML node to the KG.
+- **Process ontology**: plant structure only — Unit Operation, Stream, Pipe Manifold, Process Variable. Captures the digital replica of the physical plant.
+
+The bridge between them: `Process Variable` (process ontology) is linked to `Parameter` (model ontology). This lets agents automatically match sensor tags to model parameters without hardcoding the mapping.
+
+This clean separation means the physics knowledge (model ontology) is reusable across plants, while the plant-specific instantiation (process ontology) is what changes per deployment.
+
+---
+
+## Cross-domain ontology stack
+
+No single ontology covers all of chemical process engineering. Zhang et al. demonstrate the emerging standard stack that connects multiple community ontologies:
+
+| Ontology | Domain |
+|---|---|
+| OntoCAPE | Chemical process units, phenomena, models |
+| DEXPI | P&ID equipment and streams (process industry standard) |
+| OntoDevice | Physical devices (sensors, actuators) |
+| OM | Units and quantities |
+| SAREF | Smart device functions |
+| OntoSpecies | Chemical species |
+
+These are linked in the process ontology via explicit cross-references. The practical implication: any agent that navigates this combined KG can reason across all these domains simultaneously. This is the ontology equivalent of API composition — but standardized and reasoned over rather than hardcoded.
+
+---
+
+## Agents as ontology navigators
+
+In Zhang et al., agents don't call tools in the ReAct sense — they *traverse the knowledge graph* to find applicable knowledge. The subprocess identification agent asks: "for this unit operation, which laws in the model ontology are applicable given its connected parameters?" The answer is read from the graph, not hard-coded.
+
+This is a fundamentally different architecture from LLM-based planning: the agent's reasoning is encoded *in the ontology*, not in the prompt. The LLM (if any) is at most a frontend for querying the KG. The KG enforces correctness.
+
+---
+
 ## Papers
 - [[sources/laub2026-rl-mechanistic-models-ii]] — OntoCAPE-based ontology for knowledge management in automated mechanistic modeling; building blocks, graph grammar, reward shaping stored and reasoned over via SWRL rules
+- [[sources/zhang2026-semantic-framework]] — dual-ontology architecture (model + process) for process digitalisation; MathML-encoded laws; cross-domain ontology stack; agents as KG navigators; deployed on real AMPLE pilot plant
